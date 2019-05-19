@@ -1,0 +1,29 @@
+
+
+service: comments-comprehend
+
+provider:
+  name: aws
+  runtime: python3.7
+  stage: dev
+  region: eu-west-1
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - logs:CreateLogGroup
+        - logs:CreateLogStream
+        - logs:PutLogEvents
+        - comprehend:DetectDominantLanguage
+        comprehend:DetectSentiment
+      Resource: "*"
+
+nctions` block defines what code to deploy
+functions:
+  sentimentAnalysis:
+    handler: handler.sentimentAnalysis
+    # The `events` block defines how to trigger the handler.helloWorld code
+    events:
+      - http:
+          path: sentiment-analysis
+          method: get
+          cors: true
