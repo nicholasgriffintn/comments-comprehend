@@ -14,10 +14,9 @@ provider:
         - logs:CreateLogStream
         - logs:PutLogEvents
         - comprehend:DetectDominantLanguage
-        comprehend:DetectSentiment
+        - comprehend:DetectSentiment
       Resource: "*"
 
-nctions` block defines what code to deploy
 functions:
   sentimentAnalysis:
     handler: handler.sentimentAnalysis
